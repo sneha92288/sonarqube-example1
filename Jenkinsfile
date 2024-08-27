@@ -22,12 +22,19 @@
 // }
 
 pipeline {
+
    agent {
+
       node {
+
           label 'maven'
+
     }
 
 }
+
+ 
+
 environment {
 
   PATH= "/opt/apache-maven-3.9.2/bin/:$PATH"
@@ -48,6 +55,14 @@ environment {
 
    stage("SonarQube analysis"){
 
+   environement {
+
+      scannerHome = tool 'sonarqubr=server'
+
+   }
+
+   steps{
+
    def scannerHome = tool 'sonarqube-serverr";
 
    withSonarQubeEnv("my SonarQube server")
@@ -56,6 +71,10 @@ environment {
 
     }
 
+    }
+
    }
 
   }
+
+
